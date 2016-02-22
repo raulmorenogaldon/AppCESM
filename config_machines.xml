@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<config_machines>
+
+	<machine MACH="instance">
+		<DESC>OS is Linux, [[[CPUS]]] pes/node</DESC>
+		<COMPILERS>intel</COMPILERS>
+		<MPILIBS>mvapich</MPILIBS>
+		<RUNDIR>$CCSMROOT/$CASE/run</RUNDIR>
+		<EXEROOT>$CCSMROOT/$CASE/exeroot</EXEROOT>
+		<CESMSCRATCHROOT>$CCSMROOT/$CASE/scratchroot</CESMSCRATCHROOT>
+		<DIN_LOC_ROOT>/home/rmoreno/workspace/cesm1_2_2/inputdata</DIN_LOC_ROOT>
+		<DIN_LOC_ROOT_CLMFORC>/home/rmoreno/workspace/cesm1_2_2/inputdata/lmwg</DIN_LOC_ROOT_CLMFORC>
+		<DOUT_S_ROOT>$CCSMROOT/$CASE/archive</DOUT_S_ROOT>
+		<DOUT_L_MSROOT>$CCSMROOT/$CASE/ltarchive</DOUT_L_MSROOT>
+		<CCSM_BASELINE>/home/rmoreno/workspace/cesm1_2_2/ccsm_baselines</CCSM_BASELINE>
+		<CCSM_CPRNC>/home/rmoreno/workspace/cesm1_2_2/ccsm_cprnc/cprnc</CCSM_CPRNC>
+		<OS>Linux</OS>
+		<BATCHQUERY>qstat</BATCHQUERY>
+		<BATCHSUBMIT>qsub</BATCHSUBMIT>
+		<SUPPORTED_BY>raulmorenogaldon@gmail.com</SUPPORTED_BY>
+		<GMAKE_J>[[[CPUS]]]</GMAKE_J>
+		<MAX_TASKS_PER_NODE>[[[CPUS]]]</MAX_TASKS_PER_NODE>
+	</machine>
+
+</config_machines>
