@@ -67,9 +67,7 @@ setenv OMP_NUM_THREADS ${maxthrds}
 # USERDEFINED
 # edit job launching
 #===============================================================================
-setenv LD_LIBRARY_PATH /home/rmoreno/local/lib:/home/software/intel/composer_xe_2015.1.133/compiler/lib/intel64
-
-/home/rmoreno/local/bin/mpiexec -n ${maxtasks} \$EXEROOT/cesm.exe >&! cesm.log.\$LID
+mpiexec -n ${maxtasks} \$EXEROOT/cesm.exe >&! cesm.log.\$LID
 
 wait
 echo "\`date\` -- CSM EXECUTION HAS FINISHED" 

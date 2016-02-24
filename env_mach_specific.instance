@@ -11,6 +11,6 @@
 #limit coredumpsize unlimited
 limit stacksize unlimited
 
-setenv NETCDF_DIR /home/rmoreno/local
-setenv PNETCDF_DIR /home/rmoreno/local
-setenv TEMPDIR /home/rmoreno/tmp
+setenv NETCDF_DIR [[[#LIBPATH]]]
+setenv PNETCDF_DIR [[[#LIBPATH]]]
+setenv TEMPDIR [[[#TMPPATH]]]
