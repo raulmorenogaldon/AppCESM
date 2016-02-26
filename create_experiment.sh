@@ -34,6 +34,16 @@ cd [[[#EXPERIMENT_NAME]]]
 
 echo "--------------------------------"
 echo "Compiling case..."
+
+# Fill namelist
+echo "[[[usr_nl_cam]]]" >> usr_nl_cam
+echo "[[[usr_nl_cice]]]" >> usr_nl_cice
+echo "[[[usr_nl_clm]]]" >> usr_nl_clm
+echo "[[[usr_nl_cpl]]]" >> usr_nl_cpl
+echo "[[[usr_nl_pop2]]]" >> usr_nl_pop2
+echo "[[[usr_nl_rtm]]]" >> usr_nl_rtm
+
+# General
 xmlchange PIO_CONFIG_OPTS " --enable-mpiio --enable-pnetcdf "
 xmlchange CALENDAR [[[CALENDAR]]]
 xmlchange COMP_INTERFACE [[[COMP_INTERFACE]]]
