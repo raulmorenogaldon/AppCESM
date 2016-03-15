@@ -82,8 +82,23 @@ xmlchange CICE_DECOMPSETTING [[[CICE_DECOMPSETTING]]]
 xmlchange RTM_MODE [[[RTM_MODE]]]
 xmlchange RTM_FLOOD_MODE [[[RTM_FLOOD_MODE]]]
 
+# Disable error trap
+set +e
+
 # Build
 ./[[[#EXPERIMENT_NAME]]].build
+if [ $? -eq -30 ]; then
+	echo "--------------------------------"
+	echo "Checking missing data..."
+	./check_input_data -inputdata $DIN_LOC_ROOT -export
+
+	# Reenable error trap
+	set -e
+
+	echo "--------------------------------"
+	echo "Compiling..."
+	./[[[#EXPERIMENT_NAME]]].build
+fi
 
 echo "--------------------------------"
 echo "================================"
