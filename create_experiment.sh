@@ -36,12 +36,12 @@ echo "--------------------------------"
 echo "Compiling case..."
 
 # Fill namelist
-echo "[[[usr_nl_cam]]]" >> usr_nl_cam
-echo "[[[usr_nl_cice]]]" >> usr_nl_cice
-echo "[[[usr_nl_clm]]]" >> usr_nl_clm
-echo "[[[usr_nl_cpl]]]" >> usr_nl_cpl
-echo "[[[usr_nl_pop2]]]" >> usr_nl_pop2
-echo "[[[usr_nl_rtm]]]" >> usr_nl_rtm
+echo "[[[user_nl_cam]]]" >> user_nl_cam
+echo "[[[user_nl_cice]]]" >> user_nl_cice
+echo "[[[user_nl_clm]]]" >> user_nl_clm
+echo "[[[user_nl_cpl]]]" >> user_nl_cpl
+echo "[[[user_nl_pop2]]]" >> user_nl_pop2
+echo "[[[user_nl_rtm]]]" >> user_nl_rtm
 
 # General
 xmlchange PIO_CONFIG_OPTS " --enable-mpiio --enable-pnetcdf "
