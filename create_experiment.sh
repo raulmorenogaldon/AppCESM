@@ -89,7 +89,7 @@ set +e
 ./[[[#EXPERIMENT_NAME]]].build
 echo "--------------------------------"
 echo "Checking missing data..."
-./check_input_data -inputdata $DIN_LOC_ROOT -export
+./check_input_data -inputdata [[[#INPUTPATH]]] -export
 
 # Reenable error trap
 set -e
