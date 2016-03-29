@@ -87,18 +87,16 @@ set +e
 
 # Build
 ./[[[#EXPERIMENT_NAME]]].build
-if [ $? -eq -30 ]; then
-	echo "--------------------------------"
-	echo "Checking missing data..."
-	./check_input_data -inputdata $DIN_LOC_ROOT -export
+echo "--------------------------------"
+echo "Checking missing data..."
+./check_input_data -inputdata $DIN_LOC_ROOT -export
 
-	# Reenable error trap
-	set -e
+# Reenable error trap
+set -e
 
-	echo "--------------------------------"
-	echo "Compiling..."
-	./[[[#EXPERIMENT_NAME]]].build
-fi
+echo "--------------------------------"
+echo "Compiling..."
+./[[[#EXPERIMENT_NAME]]].build
 
 echo "--------------------------------"
 echo "================================"
