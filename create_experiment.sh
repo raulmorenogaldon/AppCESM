@@ -91,6 +91,11 @@ echo "--------------------------------"
 echo "Checking missing data..."
 ./check_input_data -inputdata [[[#INPUTPATH]]] -export
 
+# Download conflictive files
+echo "--------------------------------"
+echo "Downloading conflictive input data files..."
+wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v7_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v7_2008212
+
 # Reenable error trap
 set -e
 

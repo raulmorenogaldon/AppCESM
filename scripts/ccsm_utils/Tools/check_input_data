@@ -297,8 +297,7 @@ sub dataexport($$) {
 	    }
 	    system("umask 2; mkdir -p -m 775 $dir");
 	}
-	### system("svn export $_[1] $_[0] 1>/dev/null"); # Export file.
-	system("wget -c --quiet -N --user=guestuser --password=friendly $_[1] -O $_[0] 1>/dev/null"); # Export file.
+	system("svn export $_[1] $_[0] 1>/dev/null"); # Export file.
     } else {
 	system("svn export --depth=files $_[1] $_[0] 1>/dev/null"); # Export dir.
     }
