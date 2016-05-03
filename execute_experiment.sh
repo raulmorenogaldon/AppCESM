@@ -56,6 +56,10 @@ echo "Executing case..."
 ./[[[#EXPERIMENT_NAME]]].run
 
 echo "--------------------------------"
+echo "Compressing output data..."
+tar -czvf ../output.tar.gz ./run/
+
+echo "--------------------------------"
 echo "================================"
 
 exit 0
