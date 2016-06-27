@@ -1,0 +1,17 @@
+K 8
+passtype
+V 6
+simple
+K 8
+password
+V 8
+friendly
+K 15
+svn:realmstring
+V 60
+<https://svn-ccsm-inputdata.cgd.ucar.edu:443> ccsm:inputdata
+K 8
+username
+V 9
+guestuser
+END

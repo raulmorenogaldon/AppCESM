@@ -25,6 +25,8 @@ cp ./config_compilers.xml $MACHINES/
 cp ./env_mach_specific.instance $MACHINES/
 cp ./mkbatch.instance $MACHINES/
 cp ./Depends.intel $MACHINES/
+mkdir -p ~/.subversion/auth/svn.simple
+cp ./ce8a5221ab06eacd773de5c1f8724afa ~/.subversion/auth/svn.simple/
 
 echo "--------------------------------"
 echo "Creating new case..."
