@@ -64,4 +64,8 @@
 		<PNETCDF_PATH>[[[#LIBPATH]]]</PNETCDF_PATH>
 	</compiler>
 
+	<compiler MACH="instance" COMPILER="gnu">
+		<SLIBS> -lhdf5 -lnetcdf -lnetcdff</SLIBS>
+	</compiler>
+
 </config_compilers>
