@@ -1,6 +1,29 @@
 <?xml version="1.0"?>
 <config_compilers>
 
+	<compiler COMPILER="gnu">
+		<!-- http://gcc.gnu.org/onlinedocs/gfortran/ -->
+		<ADD_CPPDEFS> -DFORTRANUNDERSCORE -DNO_R16</ADD_CPPDEFS>
+		<ADD_CFLAGS compile_threaded="true"> -fopenmp </ADD_CFLAGS>
+		<ADD_FFLAGS compile_threaded="true"> -fopenmp </ADD_FFLAGS>
+		<ADD_LDFLAGS compile_threaded="true"> -fopenmp </ADD_LDFLAGS>
+		<ADD_CMAKE_OPTS MODEL="cism"> -D CISM_GNU=ON </ADD_CMAKE_OPTS>
+		<FIXEDFLAGS>  -ffixed-form </FIXEDFLAGS>
+		<FREEFLAGS> -ffree-form </FREEFLAGS>
+		<ADD_FFLAGS DEBUG="TRUE"> -g -Wall </ADD_FFLAGS>
+		<FFLAGS> -O -fconvert=big-endian -ffree-line-length-none -ffixed-line-length-none </FFLAGS>
+		<FFLAGS_NOOPT> -O0 </FFLAGS_NOOPT>
+		<FC_AUTO_R8> -fdefault-real-8 </FC_AUTO_R8>
+		<SFC> gfortran </SFC>
+		<SCC> gcc </SCC>
+		<SCXX> g++ </SCXX>
+		<MPIFC> mpif90 </MPIFC>
+		<MPICC> mpicc  </MPICC>
+		<MPICXX> mpicxx </MPICXX>
+		<CXX_LINKER>FORTRAN</CXX_LINKER>
+		<SUPPORTS_CXX>TRUE</SUPPORTS_CXX>
+	</compiler>
+
 	<compiler COMPILER="intel">
 		<!-- http://software.intel.com/en-us/articles/intel-composer-xe/ -->
 		<ADD_CPPDEFS> -DFORTRANUNDERSCORE -DNO_R16</ADD_CPPDEFS>

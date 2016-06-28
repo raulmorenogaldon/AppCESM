@@ -4,7 +4,7 @@
 
 	<machine MACH="instance">
 		<DESC>OS is Linux, [[[#CPUS]]] pes/node</DESC>
-		<COMPILERS>intel</COMPILERS>
+		<COMPILERS>gnu,intel</COMPILERS>
 		<MPILIBS>mvapich</MPILIBS>
 		<RUNDIR>$CCSMROOT/$CASE/run</RUNDIR>
 		<EXEROOT>$CCSMROOT/$CASE/exeroot</EXEROOT>
