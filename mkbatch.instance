@@ -67,7 +67,7 @@ setenv OMP_NUM_THREADS ${maxthrds}
 # USERDEFINED
 # edit job launching
 #===============================================================================
-mpiexec -n ${maxtasks} \$EXEROOT/cesm.exe # >&! cesm.log.\$LID
+mpiexec -n ${maxtasks} \$EXEROOT/cesm.exe >&! cesm.log.\$LID
 
 wait
 echo "\`date\` -- CSM EXECUTION HAS FINISHED" 
