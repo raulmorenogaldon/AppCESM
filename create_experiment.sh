@@ -34,9 +34,6 @@ scripts/create_newcase -case [[[#EXPERIMENT_NAME]]] -res [[[GRID_RESOLUTION]]] -
 cd [[[#EXPERIMENT_NAME]]]
 ./cesm_setup
 
-echo "--------------------------------"
-echo "Compiling case..."
-
 # Fill namelist
 echo "[[[user_nl_cam]]]" >> user_nl_cam
 echo "[[[user_nl_cice]]]" >> user_nl_cice
@@ -87,8 +84,6 @@ xmlchange RTM_FLOOD_MODE [[[RTM_FLOOD_MODE]]]
 # Disable error trap
 set +e
 
-# Build
-./[[[#EXPERIMENT_NAME]]].build
 echo "--------------------------------"
 echo "Checking missing data..."
 ./check_input_data -inputdata [[[#INPUTPATH]]] -export
