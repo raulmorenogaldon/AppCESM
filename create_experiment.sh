@@ -81,28 +81,38 @@ xmlchange CICE_DECOMPSETTING [[[CICE_DECOMPSETTING]]]
 xmlchange RTM_MODE [[[RTM_MODE]]]
 xmlchange RTM_FLOOD_MODE [[[RTM_FLOOD_MODE]]]
 
-echo "--------------------------------"
-echo "Compiling..."
-./[[[#EXPERIMENT_NAME]]].build
-
 # Disable error trap
 set +e
 
 echo "--------------------------------"
-echo "Checking missing data..."
-./check_input_data -inputdata [[[#INPUTPATH]]] -export
-
-# Download conflictive files
-echo "--------------------------------"
-echo "Downloading conflictive input data files..."
-wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v7_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v7_2008212
-
-# Reenable error trap
-set -e
-
-echo "--------------------------------"
 echo "Compiling..."
 ./[[[#EXPERIMENT_NAME]]].build
+
+# Check if compiled
+if [ $? -ne 0 ]; then
+
+	echo "--------------------------------"
+	echo "Checking missing data..."
+	./check_input_data -inputdata [[[#INPUTPATH]]] -export
+
+	# Download conflictive files
+	echo "--------------------------------"
+	echo "Downloading conflictive input data files..."
+	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v3_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v3_2008212
+	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v4_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v4_2008212
+	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v5_2008212
+	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v6_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v6_2008212
+	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v5_2008212
+	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v7_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v7_2008212
+
+	# Reenable error trap
+	set -e
+
+	echo "--------------------------------"
+	echo "Compiling again..."
+	./[[[#EXPERIMENT_NAME]]].build
+
+fi
 
 echo "--------------------------------"
 echo "================================"
