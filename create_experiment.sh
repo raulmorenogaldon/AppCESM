@@ -81,6 +81,10 @@ xmlchange CICE_DECOMPSETTING [[[CICE_DECOMPSETTING]]]
 xmlchange RTM_MODE [[[RTM_MODE]]]
 xmlchange RTM_FLOOD_MODE [[[RTM_FLOOD_MODE]]]
 
+echo "--------------------------------"
+echo "Compiling..."
+./[[[#EXPERIMENT_NAME]]].build
+
 # Disable error trap
 set +e
 
