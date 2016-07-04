@@ -106,12 +106,17 @@ if [ $? -ne 0 ]; then
 	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v5_2008212
 	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v7_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v7_2008212
 
-	# Reenable error trap
-	set -e
-
 	echo "--------------------------------"
 	echo "Compiling again..."
 	./[[[#EXPERIMENT_NAME]]].build
+
+	# Check if compiled
+	if [ $? -ne 0 ]; then
+		echo "--------------------------------"
+		echo "FAILED COMPILATION!"
+		echo "================================"
+		exit -1
+	fi
 
 fi
 
