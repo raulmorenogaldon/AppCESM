@@ -30,7 +30,7 @@ cp ./ce8a5221ab06eacd773de5c1f8724afa ~/.subversion/auth/svn.simple/
 
 echo "--------------------------------"
 icc -v >& /dev/null
-if [ $? -eq 0 ] then;
+if [ $? -eq 0 ]; then
 	echo "Compiler is Intel"
 	COMPILER=intel
 else
