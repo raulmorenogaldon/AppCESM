@@ -9,6 +9,17 @@ function xmlchange {
 	fi
 }
 
+echo "================================"
+echo "--------------------------------"
+icc -v >& /dev/null
+if [ $? -eq 0 ]; then
+	echo "Compiler is Intel"
+	COMPILER=intel
+else
+	echo "Compiler is GNU"
+	COMPILER=gnu
+fi
+
 # Error checking
 set -e
 
@@ -16,7 +27,6 @@ MACHINES=scripts/ccsm_utils/Machines
 
 # Copy configuration files
 
-echo "================================"
 echo "--------------------------------"
 echo "Copying configuration files..."
 cp ./config_pes.xml $MACHINES/
@@ -27,16 +37,6 @@ cp ./mkbatch.instance $MACHINES/
 cp ./Depends.intel $MACHINES/
 mkdir -p ~/.subversion/auth/svn.simple
 cp ./ce8a5221ab06eacd773de5c1f8724afa ~/.subversion/auth/svn.simple/
-
-echo "--------------------------------"
-icc -v >& /dev/null
-if [ $? -eq 0 ]; then
-	echo "Compiler is Intel"
-	COMPILER=intel
-else
-	echo "Compiler is GNU"
-	COMPILER=gnu
-fi
 
 echo "--------------------------------"
 echo "Creating new case..."
