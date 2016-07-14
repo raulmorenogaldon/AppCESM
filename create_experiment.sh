@@ -29,8 +29,18 @@ mkdir -p ~/.subversion/auth/svn.simple
 cp ./ce8a5221ab06eacd773de5c1f8724afa ~/.subversion/auth/svn.simple/
 
 echo "--------------------------------"
+icc -v >& /dev/null
+if [ $? -eq 0 ] then;
+	echo "Compiler is Intel"
+	COMPILER=intel
+else
+	echo "Compiler is GNU"
+	COMPILER=gnu
+fi
+
+echo "--------------------------------"
 echo "Creating new case..."
-scripts/create_newcase -case [[[#EXPERIMENT_NAME]]] -res [[[GRID_RESOLUTION]]] -compset [[[COMPSET]]] -mach instance -compiler intel
+scripts/create_newcase -case [[[#EXPERIMENT_NAME]]] -res [[[GRID_RESOLUTION]]] -compset [[[COMPSET]]] -mach instance -compiler $COMPILER
 cd [[[#EXPERIMENT_NAME]]]
 ./cesm_setup
 
@@ -99,12 +109,12 @@ if [ $? -ne 0 ]; then
 	echo "--------------------------------"
 	echo "Downloading conflictive input data files..."
 	mkdir -p [[[#INPUTPATH]]]/ice/cice
-	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v3_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v3_2008212
-	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v4_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v4_2008212
-	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v5_2008212
-	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v6_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v6_2008212
-	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v5_2008212
-	wget -c --quiet -N --user=guestuser --password=friendly https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v7_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v7_2008212
+	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v3_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v3_2008212
+	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v4_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v4_2008212
+	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v5_2008212
+	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v6_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v6_2008212
+	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v5_2008212
+	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v7_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v7_2008212
 
 	echo "--------------------------------"
 	echo "Compiling again..."
