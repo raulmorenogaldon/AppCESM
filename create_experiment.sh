@@ -94,6 +94,17 @@ xmlchange RTM_FLOOD_MODE [[[RTM_FLOOD_MODE]]]
 # Disable error trap
 set +e
 
+# Download conflictive files
+echo "--------------------------------"
+echo "Downloading conflictive input data files..."
+mkdir -p [[[#INPUTPATH]]]/ice/cice
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v3_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v3_2008212
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v4_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v4_2008212
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v5_2008212
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v6_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v6_2008212
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v5_2008212
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v7_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v7_2008212
+
 echo "--------------------------------"
 echo "Compiling..."
 ./[[[#EXPERIMENT_NAME]]].build
@@ -104,17 +115,6 @@ if [ $? -ne 0 ]; then
 	echo "--------------------------------"
 	echo "Checking missing data..."
 	./check_input_data -inputdata [[[#INPUTPATH]]] -export
-
-	# Download conflictive files
-	echo "--------------------------------"
-	echo "Downloading conflictive input data files..."
-	mkdir -p [[[#INPUTPATH]]]/ice/cice
-	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v3_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v3_2008212
-	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v4_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v4_2008212
-	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v5_2008212
-	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v6_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v6_2008212
-	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v5_2008212
-	wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v7_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v7_2008212
 
 	echo "--------------------------------"
 	echo "Compiling again..."
