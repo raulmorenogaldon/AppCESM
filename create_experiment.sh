@@ -98,12 +98,12 @@ set +e
 echo "--------------------------------"
 echo "Downloading conflictive input data files..."
 mkdir -p [[[#INPUTPATH]]]/ice/cice
-wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v3_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v3_2008212
-wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v4_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v4_2008212
-wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v5_2008212
-wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v6_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v6_2008212
-wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v5_2008212
-wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v7_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v7_2008212
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v3_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v3_20080212
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v4_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v4_20080212
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v5_20080212
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v6_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v6_20080212
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v5_20080212
+wget -c --quiet -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v7_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v7_20080212
 
 echo "--------------------------------"
 echo "Compiling..."
