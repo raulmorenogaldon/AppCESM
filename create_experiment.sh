@@ -45,12 +45,12 @@ cd [[[#EXPERIMENT_NAME]]]
 ./cesm_setup
 
 # Fill namelist
-echo "[[[user_nl_cam]]]" >> user_nl_cam
-echo "[[[user_nl_cice]]]" >> user_nl_cice
-echo "[[[user_nl_clm]]]" >> user_nl_clm
-echo "[[[user_nl_cpl]]]" >> user_nl_cpl
-echo "[[[user_nl_pop2]]]" >> user_nl_pop2
-echo "[[[user_nl_rtm]]]" >> user_nl_rtm
+echo -e "[[[user_nl_cam]]]" >> user_nl_cam
+echo -e "[[[user_nl_cice]]]" >> user_nl_cice
+echo -e "[[[user_nl_clm]]]" >> user_nl_clm
+echo -e "[[[user_nl_cpl]]]" >> user_nl_cpl
+echo -e "[[[user_nl_pop2]]]" >> user_nl_pop2
+echo -e "[[[user_nl_rtm]]]" >> user_nl_rtm
 
 # General
 xmlchange PIO_CONFIG_OPTS " --enable-mpiio --enable-pnetcdf "
