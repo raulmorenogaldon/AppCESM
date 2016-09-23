@@ -25,8 +25,11 @@ set -e
 
 MACHINES=scripts/ccsm_utils/Machines
 
-# Copy configuration files
+# Setup environment
+export EXPERIMENTPATH="$(pwd)/[[[#EXPERIMENT_NAME]]]"
+export INPUTPATH="[[[#INPUTPATH]]]"
 
+# Copy configuration files
 echo "--------------------------------"
 echo "Copying configuration files..."
 cp ./config_pes.xml $MACHINES/
@@ -42,7 +45,6 @@ echo "--------------------------------"
 echo "Creating new case..."
 scripts/create_newcase -case [[[#EXPERIMENT_NAME]]] -res [[[GRID_RESOLUTION]]] -compset [[[COMPSET]]] -mach instance -compiler $COMPILER
 cd [[[#EXPERIMENT_NAME]]]
-./cesm_setup
 
 # Fill namelist
 echo -e "[[[user_nl_cam]]]" >> user_nl_cam
@@ -51,6 +53,14 @@ echo -e "[[[user_nl_clm]]]" >> user_nl_clm
 echo -e "[[[user_nl_cpl]]]" >> user_nl_cpl
 echo -e "[[[user_nl_pop2]]]" >> user_nl_pop2
 echo -e "[[[user_nl_rtm]]]" >> user_nl_rtm
+
+# Replace environment vars
+envsubst < user_nl_cam  | tee user_nl_cam  > /dev/null
+envsubst < user_nl_cice | tee user_nl_cice > /dev/null
+envsubst < user_nl_clm  | tee user_nl_clm  > /dev/null
+envsubst < user_nl_cpl  | tee user_nl_cpl  > /dev/null
+envsubst < user_nl_pop2 | tee user_nl_pop2 > /dev/null
+envsubst < user_nl_rtm  | tee user_nl_rtm  > /dev/null
 
 # General
 xmlchange PIO_CONFIG_OPTS " --enable-mpiio --enable-pnetcdf "
@@ -90,6 +100,11 @@ xmlchange CICE_DECOMPSETTING [[[CICE_DECOMPSETTING]]]
 # RTM
 xmlchange RTM_MODE [[[RTM_MODE]]]
 xmlchange RTM_FLOOD_MODE [[[RTM_FLOOD_MODE]]]
+
+# Call cesm_setup
+echo "--------------------------------"
+echo "Setup case..."
+./cesm_setup
 
 # Download conflictive files
 echo "--------------------------------"
