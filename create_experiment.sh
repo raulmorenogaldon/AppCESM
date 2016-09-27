@@ -46,13 +46,12 @@ echo "Creating new case..."
 scripts/create_newcase -case [[[#EXPERIMENT_NAME]]] -res [[[GRID_RESOLUTION]]] -compset [[[COMPSET]]] -mach instance -compiler $COMPILER
 cd [[[#EXPERIMENT_NAME]]]
 
+# Call cesm_setup
+echo "--------------------------------"
+echo "Setup case..."
+./cesm_setup
+
 # Fill namelist
-touch user_nl_cam
-touch user_nl_cice
-touch user_nl_clm
-touch user_nl_cpl
-touch user_nl_pop2
-touch user_nl_rtm
 echo -e "[[[user_nl_cam]]]" >> user_nl_cam
 echo -e "[[[user_nl_cice]]]" >> user_nl_cice
 echo -e "[[[user_nl_clm]]]" >> user_nl_clm
@@ -106,11 +105,6 @@ xmlchange CICE_DECOMPSETTING [[[CICE_DECOMPSETTING]]]
 # RTM
 xmlchange RTM_MODE [[[RTM_MODE]]]
 xmlchange RTM_FLOOD_MODE [[[RTM_FLOOD_MODE]]]
-
-# Call cesm_setup
-echo "--------------------------------"
-echo "Setup case..."
-./cesm_setup
 
 # Download conflictive files
 echo "--------------------------------"
