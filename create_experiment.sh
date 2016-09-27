@@ -59,14 +59,6 @@ echo -e "[[[user_nl_cpl]]]" >> user_nl_cpl
 echo -e "[[[user_nl_pop2]]]" >> user_nl_pop2
 echo -e "[[[user_nl_rtm]]]" >> user_nl_rtm
 
-# Replace environment vars
-envsubst < user_nl_cam  | tee user_nl_cam  > /dev/null
-envsubst < user_nl_cice | tee user_nl_cice > /dev/null
-envsubst < user_nl_clm  | tee user_nl_clm  > /dev/null
-envsubst < user_nl_cpl  | tee user_nl_cpl  > /dev/null
-envsubst < user_nl_pop2 | tee user_nl_pop2 > /dev/null
-envsubst < user_nl_rtm  | tee user_nl_rtm  > /dev/null
-
 # General
 xmlchange PIO_CONFIG_OPTS " --enable-mpiio --enable-pnetcdf "
 xmlchange CALENDAR [[[CALENDAR]]]
