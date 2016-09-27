@@ -47,6 +47,12 @@ scripts/create_newcase -case [[[#EXPERIMENT_NAME]]] -res [[[GRID_RESOLUTION]]] -
 cd [[[#EXPERIMENT_NAME]]]
 
 # Fill namelist
+touch user_nl_cam
+touch user_nl_cice
+touch user_nl_clm
+touch user_nl_cpl
+touch user_nl_pop2
+touch user_nl_rtm
 echo -e "[[[user_nl_cam]]]" >> user_nl_cam
 echo -e "[[[user_nl_cice]]]" >> user_nl_cice
 echo -e "[[[user_nl_clm]]]" >> user_nl_clm
