@@ -46,10 +46,8 @@ echo "Creating new case..."
 scripts/create_newcase -case [[[#EXPERIMENT_NAME]]] -res [[[GRID_RESOLUTION]]] -compset [[[COMPSET]]] -mach instance -compiler $COMPILER
 cd [[[#EXPERIMENT_NAME]]]
 
-# Call cesm_setup
 echo "--------------------------------"
-echo "Setup case..."
-./cesm_setup
+echo "Configuring variables..."
 
 # Fill namelist
 echo -e "[[[user_nl_cam]]]" >> user_nl_cam
@@ -98,6 +96,40 @@ xmlchange CICE_DECOMPSETTING [[[CICE_DECOMPSETTING]]]
 xmlchange RTM_MODE [[[RTM_MODE]]]
 xmlchange RTM_FLOOD_MODE [[[RTM_FLOOD_MODE]]]
 
+# Run
+xmlchange RUN_STARTDATE [[[RUN_STARTDATE]]]
+xmlchange START_TOD [[[START_TOD]]]
+xmlchange RUN_REFCASE [[[RUN_REFCASE]]]
+xmlchange RUN_REFDATE [[[RUN_REFDATE]]]
+xmlchange RUN_REFTOD [[[RUN_REFTOD]]]
+xmlchange BRNCH_RETAIN_CASENAME [[[BRNCH_RETAIN_CASENAME]]]
+xmlchange STOP_OPTION [[[STOP_OPTION]]]
+xmlchange STOP_N [[[STOP_N]]]
+xmlchange STOP_DATE [[[STOP_DATE]]]
+
+# Restart
+xmlchange GET_REFCASE [[[GET_REFCASE]]]
+xmlchange CONTINUE_RUN [[[CONTINUE_RUN]]]
+
+# NCPL
+xmlchange NCPL_BASE_PERIOD [[[NCPL_BASE_PERIOD]]]
+xmlchange ATM_NCPL [[[ATM_NCPL]]]
+xmlchange LND_NCPL [[[LND_NCPL]]]
+xmlchange ICE_NCPL [[[ICE_NCPL]]]
+xmlchange OCN_NCPL [[[OCN_NCPL]]]
+xmlchange GLC_NCPL [[[GLC_NCPL]]]
+xmlchange ROF_NCPL [[[ROF_NCPL]]]
+xmlchange WAV_NCPL [[[WAV_NCPL]]]
+xmlchange OCN_TIGHT_COUPLING [[[OCN_TIGHT_COUPLING]]]
+
+# Others
+xmlchange BUDGETS [[[BUDGETS]]]
+xmlchange COMP_RUN_BARRIERS [[[COMP_RUN_BARRIERS]]]
+xmlchange INFO_DBUG [[[INFO_DBUG]]]
+xmlchange TIMER_LEVEL [[[TIMER_LEVEL]]]
+xmlchange CHECK_TIMING [[[CHECK_TIMING]]]
+xmlchange SAVE_TIMING [[[SAVE_TIMING]]]
+
 # Download conflictive files
 echo "--------------------------------"
 echo "Downloading conflictive input data files..."
@@ -108,6 +140,16 @@ wget -c --quiet --user=guestuser --password=friendly -N https://svn-ccsm-inputda
 wget -c --quiet --user=guestuser --password=friendly -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx1v6_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx1v6_20080212
 wget -c --quiet --user=guestuser --password=friendly -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v5_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v5_20080212
 wget -c --quiet --user=guestuser --password=friendly -N https://svn-ccsm-inputdata.cgd.ucar.edu/trunk/inputdata/ice/cice/iced.0001-01-01.gx3v7_20080212 -O [[[#INPUTPATH]]]/ice/cice/iced.0001-01-01.gx3v7_20080212
+
+# Hybrid run
+echo "--------------------------------"
+echo "Copying hybrid data..."
+cp -rfv [[[#INPUTPATH]]]/run ./run || : # Avoid error code in command
+
+# Call cesm_setup
+echo "--------------------------------"
+echo "Setup case..."
+./cesm_setup
 
 # Disable error trap
 set +e
