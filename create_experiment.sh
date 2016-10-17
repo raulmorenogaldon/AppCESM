@@ -130,6 +130,10 @@ xmlchange TIMER_LEVEL [[[TIMER_LEVEL]]]
 xmlchange CHECK_TIMING [[[CHECK_TIMING]]]
 xmlchange SAVE_TIMING [[[SAVE_TIMING]]]
 
+# Restart files every 1 month
+xmlchange REST_OPTION "nmonths"
+xmlchange REST_N "1"
+
 # Download conflictive files
 echo "--------------------------------"
 echo "Downloading conflictive input data files..."
@@ -143,8 +147,12 @@ wget -c --quiet --user=guestuser --password=friendly -N https://svn-ccsm-inputda
 
 # Hybrid run
 echo "--------------------------------"
-echo "Copying hybrid data..."
-cp -rfv [[[#INPUTPATH]]]/run ./run || : # Avoid error code in command
+echo "Copying restart data..."
+cp -rfv [[[#INPUTPATH]]]/run run || : # Avoid error code in command
+
+echo "--------------------------------"
+echo "Copying archive data..."
+cp -rfv [[[#INPUTPATH]]]/archive archive || : # Avoid error code in command
 
 # Call cesm_setup
 echo "--------------------------------"

@@ -18,13 +18,23 @@ MACHINES=scripts/ccsm_utils/Machines
 cd [[[#EXPERIMENT_NAME]]]
 
 echo "================================"
+
+# Check if it is continue run
+CONTINUE_DATE=$(ls -x1 archive/rest/ | tail -1)
+if [ -n $CONTINUE_DATE ]; then
+	echo "--------------------------------"
+	echo "Setting continue run..."
+	xmlchange CONTINUE_RUN "TRUE"
+	cp archive/rest/$CONTINUE_DATE/* run/
+fi
+
 echo "--------------------------------"
 echo "Executing case..."
 ./[[[#EXPERIMENT_NAME]]].run
 
 echo "--------------------------------"
 echo "Compressing output data..."
-tar -czvf ../output.tar.gz ./run/
+tar -czvf ../output.tar.gz run/ archive/
 
 echo "--------------------------------"
 echo "================================"
