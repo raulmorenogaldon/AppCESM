@@ -130,8 +130,7 @@ xmlchange TIMER_LEVEL [[[TIMER_LEVEL]]]
 xmlchange CHECK_TIMING [[[CHECK_TIMING]]]
 xmlchange SAVE_TIMING [[[SAVE_TIMING]]]
 
-# Restart files every 1 month
-xmlchange REST_OPTION "nmonths"
+# Restart files every 1 time unit (STOP_OPTION == REST_OPTION)
 xmlchange REST_N "1"
 
 # Download conflictive files
