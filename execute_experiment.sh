@@ -35,6 +35,9 @@ echo "Executing case..."
 echo "--------------------------------"
 echo "Compressing output data..."
 tar -czvf ../output.tar.gz run/ archive/
+mv output.tar.gz [[[#OUTPUTPATH]]]/
+cp -r archive [[[#OUTPUTPATH]]]/
+cp -r run [[[#OUTPUTPATH]]]/
 
 echo "--------------------------------"
 echo "================================"
