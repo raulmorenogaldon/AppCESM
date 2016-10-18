@@ -132,6 +132,8 @@ xmlchange SAVE_TIMING [[[SAVE_TIMING]]]
 
 # Restart files every 1 time unit (STOP_OPTION == REST_OPTION)
 xmlchange REST_N "1"
+xmlchange REST_OPTION [[[REST_OPTION]]]
+xmlchange REST_N [[[REST_N]]]
 
 # Download conflictive files
 echo "--------------------------------"
