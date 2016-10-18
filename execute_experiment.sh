@@ -21,7 +21,7 @@ echo "================================"
 
 # Check if it is continue run
 CONTINUE_DATE=$(ls -x1 archive/rest/ | tail -1)
-if [ -n $CONTINUE_DATE ]; then
+if [ -n "$CONTINUE_DATE" ]; then
 	echo "--------------------------------"
 	echo "Setting continue run..."
 	xmlchange CONTINUE_RUN "TRUE"
