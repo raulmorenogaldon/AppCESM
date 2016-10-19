@@ -32,9 +32,12 @@ echo "--------------------------------"
 echo "Executing case..."
 ./[[[#EXPERIMENT_NAME]]].run
 
+# Disable error checking
+set +e
+
 echo "--------------------------------"
 echo "Compressing output data..."
-tar -czvf ../output.tar.gz run/ archive/
+tar -czvf output.tar.gz run/ archive/
 mv output.tar.gz [[[#OUTPUTPATH]]]/
 cp -r archive [[[#OUTPUTPATH]]]/
 cp -r run [[[#OUTPUTPATH]]]/
