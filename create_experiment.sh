@@ -155,6 +155,11 @@ echo "--------------------------------"
 echo "Copying archive data..."
 cp -rfv [[[#INPUTPATH]]]/archive archive || : # Avoid error code in command
 
+echo "--------------------------------"
+echo "Linking archive and run to output ..."
+ln -s [[[#OUTPUTPATH]]]/run run || : # Avoid error code in command
+ln -s [[[#OUTPUTPATH]]]/archive archive || : # Avoid error code in command
+
 # Call cesm_setup
 echo "--------------------------------"
 echo "Setup case..."
