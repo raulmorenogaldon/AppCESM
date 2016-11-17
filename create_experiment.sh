@@ -160,6 +160,14 @@ echo "Linking archive and run to output ..."
 ln -s [[[#OUTPUTPATH]]]/run run || : # Avoid error code in command
 ln -s [[[#OUTPUTPATH]]]/archive archive || : # Avoid error code in command
 
+# Check if there is a previous restart file
+CONTINUE_DATE=$(ls -x1 archive/rest/ | tail -1)
+if [ -n "$CONTINUE_DATE" ]; then
+	echo "--------------------------------"
+	echo "Copying restart run from archive..."
+	cp archive/rest/$CONTINUE_DATE/* run/
+fi
+
 # Call cesm_setup
 echo "--------------------------------"
 echo "Setup case..."

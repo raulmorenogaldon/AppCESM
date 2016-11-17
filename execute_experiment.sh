@@ -20,12 +20,11 @@ cd [[[#EXPERIMENT_NAME]]]
 echo "================================"
 
 # Check if it is continue run
-CONTINUE_DATE=$(ls -x1 archive/rest/ | tail -1)
-if [ -n "$CONTINUE_DATE" ]; then
+FILES=$(find run -name "rpointer*")
+if [ -n "$FILES" ]; then
 	echo "--------------------------------"
-	echo "Setting continue run..."
+	echo "Resuming run..."
 	xmlchange CONTINUE_RUN "TRUE"
-	cp archive/rest/$CONTINUE_DATE/* run/
 fi
 
 echo "--------------------------------"
