@@ -157,8 +157,8 @@ cp -rfv [[[#INPUTPATH]]]/archive archive || : # Avoid error code in command
 
 echo "--------------------------------"
 echo "Linking archive and run to output ..."
-ln -s [[[#OUTPUTPATH]]]/run run || : # Avoid error code in command
-ln -s [[[#OUTPUTPATH]]]/archive archive || : # Avoid error code in command
+ln -s $(pwd)/run [[[#OUTPUTPATH]]]/run || : # Avoid error code in command
+ln -s $(pwd)/archive [[[#OUTPUTPATH]]]/archive || : # Avoid error code in command
 
 # Check if there is a previous restart file
 CONTINUE_DATE=$(ls -x1 archive/rest/ | tail -1)
