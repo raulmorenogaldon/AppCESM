@@ -7,7 +7,7 @@
 	"GRID_RESOLUTION": {
 		"type": "TEXT",
 		"category": "General",
-		"default_value": "g16_g16"
+		"default_value": "f19_g16"
 	},
 	"STOP_N": {
 		"type": "TEXT",
