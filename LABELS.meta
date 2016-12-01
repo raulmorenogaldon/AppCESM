@@ -1,0 +1,22 @@
+{
+	"COMPSET": {
+		"type": "TEXT",
+		"category": "General",
+		"default_value": "X"
+	},
+	"GRID_RESOLUTION": {
+		"type": "TEXT",
+		"category": "General",
+		"default_value": "g16_g16"
+	},
+	"STOP_N": {
+		"type": "TEXT",
+		"category": "General",
+		"default_value": "10"
+	},
+	"STOP_OPTION": {
+		"type": "TEXT",
+		"category": "General",
+		"default_value": "ndays"
+	}
+}
