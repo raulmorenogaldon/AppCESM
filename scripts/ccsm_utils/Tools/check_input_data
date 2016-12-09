@@ -300,8 +300,8 @@ sub dataexport($$) {
 	#system("svn export $_[1] $_[0] 1>/dev/null"); # Export file.
 	system("wget -c --quiet --user=guestuser --password=friendly -N $_[1] -O $_[0] 1>/dev/null"); # Export file.
     } else {
-	#system("svn export --depth=files $_[1] $_[0] 1>/dev/null"); # Export dir.
-	system("wget -c -r --quiet --user=guestuser --password=friendly -N $_[1] -O $_[0] 1>/dev/null"); # Export dir.
+	system("svn export --depth=files $_[1] $_[0] 1>/dev/null"); # Export dir.
+	#system("wget -c --quiet --user=guestuser --password=friendly -N $_[1] -O $_[0] 1>/dev/null"); # Export dir.
     }
     if (-f $_[0]) {                                    # Store checksum.
         my $checksumfile = $dir.'/.checksums';         # Checksums saved here.
