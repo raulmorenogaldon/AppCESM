@@ -1,0 +1,5 @@
+"perl(XML::LibXML)"
+mpich-devel
+netcdf-devel
+netcdf-fortran-devel
+netcdf-mpich-devel
